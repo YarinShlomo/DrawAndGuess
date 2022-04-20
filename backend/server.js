@@ -5,6 +5,8 @@ const config = require("config");
 const Score = require("./model/score");
 const c = require("config");
 
+const port = process.env.PORT || 2000;
+
 const dbConfig = config.get("DAG.dbConfig.dbName");
 mongoose
   .connect(dbConfig)
@@ -17,28 +19,24 @@ mongoose
 
 const app = express();
 app.use(express.json());
-// app.use(cors({origin: ["http://localhost:3000"]}));
 app.use(cors());
 app.options("*", cors());
 
-let isPlaying = false;
 let toggleDrawWait = true;
-let lastPlayingUpdate = new Date();
 let painting = "";
 let wordToGuess = "";
 let difficulty = "";
 let numberOfGuesses;
-let users = { player1: [], player2: [] };
-let users2 = [];
 
-app.listen(2000, () => {
-  console.log("server listening on port 2000");
+
+app.listen(port, (err) => {
+  if(err) return console.log(err);
+  console.log("server running on port 2000");
 });
 
 app.get("/WelcomeNav", (req, res) => {
   if (toggleDrawWait) {
     res.status(200).json({ status: "toDraw" });
-    // isPlaying = true;
   } else {
     res.status(200).json({ status: "toWait" });
   }
@@ -71,13 +69,8 @@ app.get("/waitingHealthCheck", (req, res) => {
 });
 
 app.post("/updateDrawing", (req, res) => {
-  // let reqBody = req.body;
-  // console.log(reqBody);
-
   ({ painting, wordToGuess, difficulty } = req.body);
-  //////
-  // console.log("updated");
-  //////
+
 });
 
 app.post("/wordGuessed", (req, res) => {
