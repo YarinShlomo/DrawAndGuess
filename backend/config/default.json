@@ -1,0 +1,9 @@
+{
+    "DAG": {
+      "dbConfig": {
+        "host": "localhost",
+        "port": 5984,
+        "dbName": "mongodb+srv://yarin:TYGqTTpXrl8EnsXc@cluster0.hn9wq.mongodb.net/DrawAndGuess?retryWrites=true&w=majority"
+      }
+    }
+  }
