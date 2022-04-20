@@ -1,0 +1,13 @@
+.draw-page {
+    background-color: aqua;
+    border: solid;
+    width: 100%;
+    height: auto;
+    margin: auto;
+} 
+Canvas {
+    background-color: white;
+    /* border: solid; */
+    width: 100%;
+    height: auto;
+}
