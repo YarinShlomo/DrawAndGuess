@@ -1,0 +1,15 @@
+.choose-word{
+    text-align: center;
+    background-color: aqua;
+    border: solid;
+}
+
+.difficulty-buttons{
+    align-content: center;
+}
+
+.chosen-word {
+    margin: auto;
+    align-content: center;
+}
+
