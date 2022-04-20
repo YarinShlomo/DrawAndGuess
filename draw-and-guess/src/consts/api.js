@@ -1,0 +1,1 @@
+export const serverApi = "https://node-draw-and-guess.herokuapp.com";
