@@ -2,8 +2,11 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 import './Guess.css'
+import { serverApi } from "../../consts/api";
 
 const Guessing = () => {
+  const api = serverApi;
+
   // navigation
   const navigate = useNavigate();
 
@@ -65,7 +68,7 @@ const Guessing = () => {
   const notifyServer = () => {
     axios({
       method: "post",
-      url: "http://localhost:2000/wordGuessed",
+      url: `${api}/wordGuessed`,
       data: { numberOfGuesses: countGuesses, score: sessionInfo.score, startDate : sessionInfo.startDate }
     }).catch((e) => {
       console.log("[notifyServer] from Guess " + e);

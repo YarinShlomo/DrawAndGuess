@@ -2,17 +2,18 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Welcome.css";
 import { useEffect, useState } from "react";
+import { serverApi } from "../../consts/api";
 
 
 const Welcome = (props) => {
+  const api = serverApi;
   let goTo = "";
   const navigate = useNavigate();
   const [highScore, setHighScore] = useState(0);
-
   useEffect(()=>{
     axios({
       method: "get",
-      url: "http://localhost:2000/highScore"
+      url: `${api}/highScore`
     })
     .catch((e) => {
       console.log("[useEffect] => welcome: couldnt get highest score" + e);
@@ -27,7 +28,7 @@ const Welcome = (props) => {
     
     axios({
       method: "get",
-      url: "http://localhost:2000/WelcomeNav",
+      url: `${api}/WelcomeNav`,
     })
       .catch((e) => {
         console.log("[Welcome] => " + e);

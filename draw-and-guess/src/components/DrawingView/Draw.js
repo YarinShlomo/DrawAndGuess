@@ -3,8 +3,11 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import Canvas from "./Canvas/Canvas";
 import "./Draw.css";
+import { serverApi } from "../../consts/api";
 
 const Drawing = () => {
+  const api = serverApi;
+
   //navigate
   const navigate = useNavigate();
 
@@ -27,7 +30,7 @@ const Drawing = () => {
   const submitHandler = () => {
     axios({
       method: "post",
-      url: "http://localhost:2000/updateDrawing",
+      url: `${api}/updateDrawing`,
       data: {
         painting: base64Img,
         wordToGuess: wordPicked,
