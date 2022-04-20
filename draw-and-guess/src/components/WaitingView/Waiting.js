@@ -2,8 +2,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEffect } from "react";
 import './Waiting.css'
+import { serverApi } from "../../consts/api";
 
 const Waiting = () => {
+  const api = serverApi;
   //navigate
   const navigate = useNavigate();
   const submitHandler = (event) => {
@@ -23,7 +25,7 @@ const Waiting = () => {
     const uri = gotFrom === "draw" ? "isWordGuessed" : "waitingHealthCheck";
     axios({
       method: "get",
-      url: `http://localhost:2000/${uri}`,
+      url: `${api}/${uri}`,
     })
       .catch((e) => {
         console.log("[healthCheck] -> Waiting" + e);
